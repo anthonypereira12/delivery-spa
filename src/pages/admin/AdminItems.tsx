@@ -110,6 +110,7 @@ export default function AdminItems(){
           className="input"
           type="number"
           placeholder="Preço (centavos)"
+          step="0.01"
           {...register("priceCents")}
         />
 
