@@ -32,7 +32,7 @@ export default function AdminItems(){
         <input className="input" placeholder="URL da imagem" value={form.imageUrl} onChange={e=>setForm(f=>({ ...f, imageUrl:e.target.value }))} />
         <input className="input sm:col-span-2" placeholder="Descrição" value={form.description} onChange={e=>setForm(f=>({ ...f, description:e.target.value }))} />
         <label className="flex items-center gap-2"><input type="checkbox" checked={form.featured} onChange={e=>setForm(f=>({ ...f, featured:e.target.checked }))} /> Destaque</label>
-        <button className="btn btn-primary">Criar</button>
+        <input type="submit" className="btn btn-primary">Criar</input>
       </form>
 
       <div className="grid gap-3 sm:grid-cols-2">
