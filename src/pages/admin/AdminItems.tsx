@@ -51,41 +51,38 @@ export default function AdminItems(){
 
   // Função substituindo o create()
   const createItem = async (data: ItemForm) => {
+
     if (!data.restaurantId) {
       alert("Selecione um restaurante");
       return;
     }
-  
-    const priceCents = Math.round(
-      parseFloat(data.priceCents.replace(",", ".")) * 100
-    );
-  
+
     const body = {
       restaurantId: Number(data.restaurantId),
       name: data.name,
       description: data.description,
       imageUrl: data.imageUrl,
       featured: data.featured,
-      priceCents
+      priceCents: Number(data.priceCents)
     };
-  
-    const item = await api("/items", {
-      method: "POST",
-      body: JSON.stringify(body),
+
+    const item = await api("/items", { 
+      method:"POST", 
+      body: JSON.stringify(body) 
     });
-  
+
     setItems(prev => [...prev, item]);
-  
+
+    // Limpa o form, mantendo apenas o restaurantId
     reset({
       restaurantId: data.restaurantId,
       name: "",
       priceCents: "",
       description: "",
       imageUrl: "",
-      featured: false,
+      featured: false
     });
   };
-  
 
   return (
     <section className="space-y-4">
@@ -113,7 +110,6 @@ export default function AdminItems(){
           className="input"
           type="number"
           placeholder="Preço (centavos)"
-          step="0.01"
           {...register("priceCents")}
         />
 
